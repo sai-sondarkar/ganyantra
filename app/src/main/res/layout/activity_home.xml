@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="in.hackdayvadodara.ganyantra.HomeActivity"
+    android:layout_weight="4"
+    >
+
+
+
+    <TextView
+
+        android:layout_below="@+id/ed2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/tv1"
+        android:textSize="40sp"
+        android:gravity="right"
+        android:text="0.0"
+        />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <EditText
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter First Number"
+            android:id="@+id/ed1"
+            android:inputType="numberDecimal"
+            />
+        <EditText
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"
+            android:layout_below="@+id/ed1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed2"
+            android:hint="Enter second Number"
+            android:inputType="numberDecimal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <Button
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2980b9"
+            android:text="+"
+            android:textSize="70sp"
+            android:fontFamily="sans-serif-thin"
+            android:layout_weight="1"
+            android:id="@+id/add_button"
+            android:layout_below="@+id/tv1"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8e44ad"
+            android:textSize="70sp"
+            android:fontFamily="sans-serif-thin"
+            android:text="-"
+            android:layout_weight="1"
+            android:id="@+id/minus_button"
+            android:layout_below="@+id/add_button"
+            android:layout_centerHorizontal="true"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:weightSum="2">
+        <Button
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f39c12"
+            android:textSize="70sp"
+            android:fontFamily="sans-serif-thin"
+            android:text="*"
+            android:layout_weight="1"
+            android:id="@+id/multiply_button"
+            android:layout_below="@+id/minus_button"
+            android:layout_centerHorizontal="true"/>
+
+
+        <Button
+            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#27ae60"
+            android:text="/"
+            android:textSize="70sp"
+            android:fontFamily="sans-serif-thin"
+            android:id="@+id/divide_button"
+            android:layout_below="@+id/multiply_button"
+            android:layout_weight="1"
+            android:layout_centerHorizontal="true"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
