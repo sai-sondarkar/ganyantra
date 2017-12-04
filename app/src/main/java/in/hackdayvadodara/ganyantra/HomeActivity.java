@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
 
         InitUIElements();
 
-
     }
 
     public void InitUIElements(){
@@ -47,11 +46,8 @@ public class HomeActivity extends AppCompatActivity {
                 }else {
                     numberOne = Float.parseFloat(numberOneEditText.getText().toString());
                     numberTwo = Float.parseFloat(numberTwoEditText.getText().toString());
-
                     Float result = numberOne + numberTwo;
-
                     resultTextView.setText(""+result);
-
                 }
 
             }
