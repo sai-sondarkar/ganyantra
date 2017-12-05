@@ -10,6 +10,8 @@ import com.udojava.evalex.Expression;
 
 import java.math.BigDecimal;
 
+import tyrantgit.explosionfield.ExplosionField;
+
 public class CalculateAcitivity extends AppCompatActivity {
 
     TextView resultTextView,summuryTextView,divideTextView,multiplyTextView,MinusTextView,plusTextView;
@@ -19,6 +21,8 @@ public class CalculateAcitivity extends AppCompatActivity {
 
     String tempString = "";
 
+    private ExplosionField mExplosionField;
+
 
     private BigDecimal result;
 
@@ -26,6 +30,8 @@ public class CalculateAcitivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
+
+        mExplosionField = ExplosionField.attach2Window(this);
 
         InitUiElements();
         InitFont();
@@ -242,7 +248,7 @@ public class CalculateAcitivity extends AppCompatActivity {
         equalToTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getEquationAns(tempString);
+                summuryTextView.setText("0");
 
             }
         });
@@ -250,8 +256,13 @@ public class CalculateAcitivity extends AppCompatActivity {
         clearTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                mExplosionField.explode(resultTextView);
+//                mExplosionField.explode(summuryTextView);
+
                 resultTextView.setText("0");
                 summuryTextView.setText("");
+
                 tempString= "";
             }
         });
