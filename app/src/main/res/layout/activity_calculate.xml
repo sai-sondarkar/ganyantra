@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/colorAccent"
                 android:layout_weight="1"
-                android:text="+/-"
+                android:text="^"
                 android:fontFamily="sans-serif-light"
                 android:textSize="30sp"
                 android:gravity="center"/>
@@ -298,10 +298,6 @@
                 android:gravity="center"/>
 
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

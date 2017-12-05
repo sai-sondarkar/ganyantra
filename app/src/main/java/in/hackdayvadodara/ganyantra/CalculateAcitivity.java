@@ -3,25 +3,24 @@ package in.hackdayvadodara.ganyantra;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.udojava.evalex.Expression;
+
+import java.math.BigDecimal;
 
 public class CalculateAcitivity extends AppCompatActivity {
 
     TextView resultTextView,summuryTextView,divideTextView,multiplyTextView,MinusTextView,plusTextView;
-    TextView clearTextView,plusMinusTextView,percentageTextView,equalToTextView,nineTextView;
+    TextView clearTextView, raisedToTextView,percentageTextView,equalToTextView,nineTextView;
     TextView eightTextView,sevenTextview,sixTextView,fiveTextView,fourTextView,threeTextView,twoTextView,oneTextView;
     TextView doubleZeroTextView,zeroTextView,pointTextView;
 
     String tempString = "";
-    float tempNumber = 0.0f;
 
-    List<Float> numbers = new ArrayList<>();
-    List<String> operation = new ArrayList<>();
+
+    private BigDecimal result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class CalculateAcitivity extends AppCompatActivity {
                 plusTextView= (TextView) findViewById(R.id.plusTx);
 
                 clearTextView  = (TextView) findViewById(R.id.clear);
-                plusMinusTextView = (TextView) findViewById(R.id.plusminusTx);
+                raisedToTextView = (TextView) findViewById(R.id.plusminusTx);
                 percentageTextView= (TextView) findViewById(R.id.percentageTx);
                 equalToTextView= (TextView) findViewById(R.id.equalsTx);
                 nineTextView= (TextView) findViewById(R.id.nineTx);
@@ -77,7 +76,7 @@ public class CalculateAcitivity extends AppCompatActivity {
         plusTextView.setTypeface(customTypeFace);
 
         clearTextView.setTypeface(customTypeFace);
-        plusMinusTextView.setTypeface(customTypeFace);
+        raisedToTextView.setTypeface(customTypeFace);
         percentageTextView.setTypeface(customTypeFace);
         equalToTextView.setTypeface(customTypeFace);
         nineTextView.setTypeface(customTypeFace);
@@ -181,6 +180,7 @@ public class CalculateAcitivity extends AppCompatActivity {
             public void onClick(View view) {
                 tempString = tempString + ".";
                 updateTextView(".");
+
             }
         });
 
@@ -189,10 +189,7 @@ public class CalculateAcitivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                tempNumber = Float.parseFloat(tempString);
-                tempString = "";
-                numbers.add(tempNumber);
-                operation.add("+");
+                tempString = tempString + "+";
                 updateTextView("+");
 
             }
@@ -202,10 +199,7 @@ public class CalculateAcitivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                tempNumber = Float.parseFloat(tempString);
-                numbers.add(tempNumber);
-                tempString = "";
-                operation.add("-");
+                tempString = tempString + "-";
                 updateTextView("-");
 
             }
@@ -215,10 +209,7 @@ public class CalculateAcitivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                tempNumber = Float.parseFloat(tempString);
-                numbers.add(tempNumber);
-                tempString = "";
-                operation.add("x");
+                tempString = tempString + "*";
                 updateTextView("x");
 
             }
@@ -227,13 +218,23 @@ public class CalculateAcitivity extends AppCompatActivity {
         divideTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                tempNumber = Float.parseFloat(tempString);
-                numbers.add(tempNumber);
-                tempString = "";
-                operation.add("/");
+                tempString = tempString + "/";
                 updateTextView("/");
+            }
+        });
 
+        raisedToTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tempString = tempString + "^";
+                updateTextView("^");
+            }
+        });
+        percentageTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tempString = tempString + "%";
+                updateTextView("%");
             }
         });
 
@@ -241,20 +242,7 @@ public class CalculateAcitivity extends AppCompatActivity {
         equalToTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(tempString.equals("")){
-                 resultTextView.setText("Error");
-                }else {
-                    tempNumber = Float.parseFloat(tempString);
-                    numbers.add(tempNumber);
-                }
-
-
-
-                Log.d("tag",numbers.toString());
-                Log.d("tag",operation.toString());
-
-
+                getEquationAns(tempString);
 
             }
         });
@@ -264,25 +252,26 @@ public class CalculateAcitivity extends AppCompatActivity {
             public void onClick(View view) {
                 resultTextView.setText("0");
                 summuryTextView.setText("");
-                numbers.clear();
-                operation.clear();
+                tempString= "";
             }
         });
-
-
-
     }
 
-    public void getEquationAns(){
+    public void getEquationAns(String exp){
 
+        try{
+            Expression expression = new Expression(exp);
+            result = expression.eval();
+            resultTextView.setText(result+"");
+        }catch (Exception e){
 
-
+        }
     }
 
     public void updateTextView(String s){
-
         String tempStringOfTX = summuryTextView.getText().toString();
-
         summuryTextView.setText(tempStringOfTX+s);
+        getEquationAns(tempString);
+
     }
 }
