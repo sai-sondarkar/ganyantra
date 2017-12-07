@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="in.hackdayvadodara.ganyantra.SplashActivity"
-    android:background="@color/colorPrimaryDark">
+    >
 
+    <TextView
+        android:id="@+id/equalsTx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionName="background"
+        android:background="@color/colorPrimaryDark"/>
 
     <ImageView
         android:layout_width="100dp"

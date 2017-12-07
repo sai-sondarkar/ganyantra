@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="3"
-        android:elevation="3dp"
+        android:elevation="1.5dp"
         android:background="@color/background"
         android:orientation="vertical"
         android:layout_weight="5">
@@ -329,6 +329,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="="
+                android:transitionName="background"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@color/background"
                 android:fontFamily="sans-serif-light"

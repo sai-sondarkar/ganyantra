@@ -10,7 +10,6 @@ import com.udojava.evalex.Expression;
 
 import java.math.BigDecimal;
 
-import tyrantgit.explosionfield.ExplosionField;
 
 public class CalculateAcitivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class CalculateAcitivity extends AppCompatActivity {
 
     String tempString = "";
 
-    private ExplosionField mExplosionField;
+
 
 
     private BigDecimal result;
@@ -31,7 +30,7 @@ public class CalculateAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
 
-        mExplosionField = ExplosionField.attach2Window(this);
+
 
         InitUiElements();
         InitFont();
@@ -273,7 +272,12 @@ public class CalculateAcitivity extends AppCompatActivity {
         try{
             Expression expression = new Expression(exp);
             result = expression.eval();
-            resultTextView.setText(result+"");
+            if(result.doubleValue()%result.longValue()==0){
+                resultTextView.setText(result.longValue()+"");
+            }else {
+                resultTextView.setText(result.doubleValue()+"");
+            }
+
         }catch (Exception e){
 
         }
